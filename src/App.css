@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+input[type=range][orient=vertical] {
+  appearance: slider-vertical;
+  width: 8px;
+  height: 175px;
+  padding: 0 5px;
+}
