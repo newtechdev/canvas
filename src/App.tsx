@@ -17,6 +17,7 @@ import { ZeroOrderConcentration } from './components/ConcentrationEquation';
 import EnergyProfileChart from './components/EnergyProfileChart';
 import { EnergyRateChartSettings } from './components/EnergyRateChartSettings';
 import { EnergyProfileChatInput } from './components/EnergyProfileChartInput';
+import EnergyProfileRateChart from './components/EnergyProfilRateChart';
 
 function App() {
   const [time, setTime] = useState<number>(0);
@@ -67,6 +68,8 @@ function App() {
   const width = 300;
   const height = 300;
   const settings = new BeakerSettings(width, true);
+  const concentrationC = new ZeroOrderConcentration()
+  concentrationC.init2Params(0.1, 0.1)
   const concentrationA = new ZeroOrderConcentration()
   concentrationA.init4Params(0, 0.8, 10, 0.2)
   const concentrationB = new ZeroOrderConcentration()
@@ -76,16 +79,13 @@ function App() {
     B,
     C,
   } 
-  return <EnergyProfileChart 
+  return <EnergyProfileRateChart 
     width={250}
     height={250}
     settings={new EnergyRateChartSettings(250)}
-    showTemperature={true}
-    highlightTop={true}
-    highlightBottom={true}
-    moleculeHightlightColor='white'
-    order={2}
-    chartInput={new EnergyProfileChatInput(ReactionOrder.Second, 400, Catalyst.A)}
+    equation={concentrationC}
+    currentTempInverse={1 / 500}
+    highlightChart={true}
   />
 
   return (

@@ -15,8 +15,8 @@ type TimeChartDataLine = {
 type TimeChartLayoutSettings = {
     xAxis: LinearAxis
     yAxis: LinearAxis
-    haloRadius: number
-    lineWidth: number
+    haloRadius?: number
+    lineWidth?: number
 }
 
 type TimeChartDataLineViewProps = {
@@ -87,7 +87,7 @@ const TimeChartDataLineView = (props: TimeChartDataLineViewProps) => {
             if (data.haloColor) {
                 head(
                     ctx,
-                    settings.haloRadius,
+                    settings.haloRadius??10,
                     data.haloColor!
                 )
                 // .contentShape(Rectangle())
